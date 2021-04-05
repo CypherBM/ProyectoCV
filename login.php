@@ -1,44 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Loguin</title>    
-    <link rel="StyleSheet" href="css/bootstrap/css/bootstrap.min.css" type="text/css">
-    <script src="css/bootstrap/js/bootstrap.min.js"></script>	
-    <script type="text/javascript" src="js/jquery35.js">
+	<title>Login</title>    
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-4.5.3-dist/css/bootstrap.min.css">
+	<script type="text/javascript" src="css/bootstrap-4.5.3-dist/js/bootstrap.min.js"></script>	
+		
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+	<link rel="stylesheet"href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+	<script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="js/jquery35.js"></script>
+    <script type="text/javascript">
 		$(document).ready(function(){	
 			$("#ingresar").click(function(){
-				var cedula = $("#usuario").val();
-				var clave = $("#clave").val();
-				if(cedula=="" || clave=="")
-				{
-					alert("Falta datos");							 
-				}
-				else
-				{
-					var envioDatos = 'action=comprobarUsuario&usuario='+cedula+		
+				var usuario=$("#usuario").val();
+				var clave=$("#clave").val();
+			if(usuario==""||clave==""){
+				alert("faltan datos");
+			}else{
+				var envioDatos = 'action=comprobarUsuario&usuario='+usuario+		
 										'&clave='+clave;
-					//alert(envioDatos);
+					alert(envioDatos);
 					$.ajax({
 						type : 'POST',       //necesitamos definir como vamos a pasar los datos
 						data : envioDatos,   // enviar la variable o los datos que requiera php
-						url  : 'senteciasSql.php',
-						success: function(requerimiento){  // en versiones de jQuery responseText
-						
+						url  : 'sentenciasSql.php',
+						success: function(requerimiento){  // en versiones de jQuery responseText		
+              alert(requerimiento);
 							if((requerimiento)==1)
 							{					
-								window.open("principalFacebook.php","_self");
+								alert("hecho");
 							}else if((requerimiento)!==1){
-								alert("contraseña o usuario incorrectos")
+								alert("contraseña o usuario incorrectos");
 							}
 						}
-					});	
-				}
-
+					});
+			}
 			});
 		});
 	</script>
 </head>
 <body background="images/background.jpg" style="background-color: #e5e6f0;">
+
 		
 	<form style="
    text-align: center;
@@ -63,7 +69,7 @@
     background: rgb(255, 255, 255);  width: 300px;"> </td>
 			</tr>
 			<tr>
-				<td><input type="text" name="clave" id="clave" placeholder="Contraseña" style="width: 60%;
+				<td><input type="password" name="clave" id="clave" placeholder="Contraseña" style="width: 60%;
     padding: 16px 32px;
     font-size: 16px;
     margin: 8px;
@@ -74,8 +80,7 @@
     color: #333;
     background: rgb(255, 255, 255); width: 300px;"> </td>
 			</tr>
-			<tr>
-				
+			<tr>			
 				<th colspan="2"><input type="button" name="ingresar" id="ingresar" value="Iniciar sesion" style="background-color: #1877f2;
     border: none;
     border-radius: 6px;
@@ -95,6 +100,8 @@
 		</table>
 		</form>
 	</div>
+
+
 
 </body>
 </html>
