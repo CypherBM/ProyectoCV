@@ -81,11 +81,10 @@
             <div class="container">
 
                 <div class="text-bg relative">
-                    <br><br><br><br><br><br><br>
-                    <strong><h2><br><br>Tu traes la pasion, Music Hub te trae la musica</h2></strong>
-                    <p>Lorem ipsum dolor sit amet consec tetur adipiscing elit elit at felis lacinia nec et est
-                        <br> aptent taciti sociosqu ad litora torquent per conubia nostra
-                    </p>
+                    <br><br><br>
+                    <strong>
+                        <h1><br><br>Tu traes la pasión, Music Hub te trae la música</h1>
+                    </strong>
                     <a href="#">Pruebalo Ahora</a>
                 </div>
 
@@ -101,29 +100,29 @@
                 <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
                     <div class="for-box">
                         <i><img src="icon/icon1.png" alt="icon" /></i>
-                        <h3>Custom Player</h3>
-                        <p>t is a long established fact that a reader will be distracted by the readable </p>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
-                    <div class="for-box">
-                        <i><img src="icon/icon2.png" alt="icon" /></i>
-                        <h3>Easy customize</h3>
-                        <p>t is a long established fact that a reader will be distracted by the readable </p>
+                        <h3>Musica sin límites</h3>
+                        <p>Encuentra tus futuras pasiones y tus canciones favoritas de siempre entre miles de canciones.</p>
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
                     <div class="for-box">
                         <i><img src="icon/icon3.png" alt="icon" /></i>
-                        <h3>Music Playlist</h3>
-                        <p>t is a long established fact that a reader will be distracted by the readable </p>
+                        <h3>Crea tu propia biblioteca musical</h3>
+                        <p>Crea playlists con millones de canciones y llévalas contigo vayas donde vayas.</p>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+                    <div class="for-box">
+                        <i><img src="icon/icon2.png" alt="icon" /></i>
+                        <h3>Lleva tu música a donde vayas</h3>
+                        <p>Descarga tu música para llevártela cuando sales a correr o a cenar.</p>
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
                     <div class="for-box">
                         <i><img src="icon/icon4.png" alt="icon" /></i>
-                        <h3>Custom Gallery</h3>
-                        <p>t is a long established fact that a reader will be distracted by the readable </p>
+                        <h3>Album Box</h3>
+                        <p>Contamos con las portadas de tus albumes favoritos.</p>
                     </div>
                 </div>
             </div>
@@ -143,8 +142,8 @@
                     <div class="box">
                         <i><img src="images/5.png" /></i>
                         <h3>Escucha A Tus Artistas Favoritos</h3>
-                        <p>It is a long established fact that a reader will be distracted by the readable
-                            <br> content of a page when looking at its layout. The point of using Lorem
+                        <p>No importa el género, o el año de publicación aqui podras encontrar todos los hits
+                            <br> de todos tus artistas favoritos
                         </p>
                     </div>
                 </div>
@@ -159,8 +158,9 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="titlepage">
-                        <h2>Albums-box </h2>
-                        <span>It is a long established fact that a reader will be distracted by the readable <br>content of a page when looking at its layout. The point of using Lorem </span>
+                        <h2>Previews</h2>
+                        <br>
+                        <span>Aquí te dejamos con una muestra de nuestras canciones</span>
                     </div>
                 </div>
             </div>
@@ -168,28 +168,10 @@
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 margin">
                     <div class="Albums-box">
                         <figure>
-                            <a href="images/album1.jpg" class="fancybox" rel="ligthbox">
-                                <img src="images/album1.jpg" class="zoom img-fluid " alt="">
-                            </a>
-                            <span class="hoverle">
-                                <a href="images/album1.jpg" class="fancybox" rel="ligthbox"><img src="images/search.png"></a>
-                            </span>
+                        <iframe src="https://open.spotify.com/embed/playlist/3CRJaZCUTtrgxOmu4Vafzh" width="1150" height="500" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
                         </figure>
                     </div>
                 </div>
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 margin">
-                    <div class="Albums-box">
-                        <figure>
-                            <a href="images/album2.jpg" class="fancybox" rel="ligthbox ">
-                                <img src="images/album2.jpg" class="zoom img-fluid " alt="">
-                            </a>
-                            <span class="hoverle">
-                                <a href="images/album2.jpg" class="fancybox" rel="ligthbox"><img src="images/search.png"></a>
-                            </span>
-                        </figure>
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>
@@ -244,7 +226,7 @@
                     </div>
                     <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 width">
                         <div class="address">
-                            <h3>New Music </h3>
+                            <h3>Musica Nueva </h3>
                             <div class="row">
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 ">
                                     <figure><img src="images/music1.jpg" /></figure>
