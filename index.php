@@ -54,9 +54,9 @@
                             <div class="limit-box">
                                 <nav class="main-menu">
                                     <ul class="menu-area-main">
-                                        <li class="active"> <a href="index.php">Inicio</a> </li>
-                                        <li> <a href="contact.html">Registrarse</a> </li>
-                                        <li> <a href="#contact">Iniciar Sesion</a> </li>
+                                        <li class="active"> <a href="index.php">Inicio</a> </li>                                        
+                                        <li> <a href="login.php">Iniciar Sesion</a> </li>
+                                        <li> <a href="registro.php">Registrarse</a> </li>                                        
                                     </ul>
                                 </nav>
                             </div>
@@ -86,7 +86,7 @@
                     <p>Lorem ipsum dolor sit amet consec tetur adipiscing elit elit at felis lacinia nec et est
                         <br> aptent taciti sociosqu ad litora torquent per conubia nostra
                     </p>
-                    <a href="#">Pruebalo Ahora</a>
+                    <a href="registro.php">Pruebalo Ahora</a>
                 </div>
 
             </div>
@@ -151,6 +151,32 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="myModal" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+      
+                <!-- Modal Header -->
+                <div class="modal-header ">
+                <h4 class="modal-title col-11 text-center"> Aviso</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+        
+                <!-- Modal body -->
+                <div class="modal-body">
+                ¿Está seguro que desea guardar la información? <!-- Texto, componentes, formulario completo -->
+                </div>
+        
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="si">Guardar cambios</button> 		
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                </div>
+        
+                </div>
+        </div>
+  </div>
+
 
 
     <!-- Albums -->
