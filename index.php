@@ -54,12 +54,9 @@
                             <div class="limit-box">
                                 <nav class="main-menu">
                                     <ul class="menu-area-main">
-                                        <li class="active"> <a href="index.html">Inicio</a> </li>
-                                        <li> <a href="about.html">about</a> </li>
-                                        <li> <a href="album.html"> Albums</a> </li>
-                                        <li> <a href="blog.html">Blog</a> </li>
-                                        <li> <a href="contact.html">Contact</a> </li>
-                                        <li> <a href="#contact">Login</a> </li>
+                                        <li class="active"> <a href="index.php">Inicio</a> </li>
+                                        <li> <a href="contact.html">Registrarse</a> </li>
+                                        <li> <a href="#contact">Iniciar Sesion</a> </li>
                                     </ul>
                                 </nav>
                             </div>
@@ -80,11 +77,12 @@
     <!-- end header -->
     <section class="banner_section">
         <div class="banner-main">
-            <img src="images/banner2.jpg" />
+            <img src="images/banner.jpg" />
             <div class="container">
 
                 <div class="text-bg relative">
-                    <h1>Mp3<br><span class="Perfect">The Perfect Music</span><br>Welcome To The Music</h1>
+                    <br><br><br><br><br><br><br>
+                    <strong><h2><br><br>Tu traes la pasion, Music Hub te trae la musica</h2></strong>
                     <p>Lorem ipsum dolor sit amet consec tetur adipiscing elit elit at felis lacinia nec et est
                         <br> aptent taciti sociosqu ad litora torquent per conubia nostra
                     </p>
