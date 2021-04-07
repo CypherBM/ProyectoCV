@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Registro</title>    
-
+    <script src="js/jquery35.js"></script>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>	
 		
@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
 	<link rel="stylesheet"href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
 	<script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-    <script src="js/jquery35.js"></script>
+    
     <script type="text/javascript" >
 		$(document).ready(function(){	
 			$("#registrar").click(function(){
@@ -38,15 +38,18 @@
                 var genero = $("select#gen").val();
 				if(usuario=="" || clave==""||clave1==""||nombre==""||correo=="")
 				{
-                    alert("faltan datos");
+                    $('#myModal2').modal('show');
                     
 				}else{
                     if(($("#clave").val())!=($("#clave1").val())){
-                        $("#clave").focus();
                         
+                    $('#myModal3').modal('show');
+                    $("#clave1").focus();
                     }else if($("select#tipo").val()=="0"){
+                        $('#myModal4').modal('show');
                         $("select#tipo").focus();
                     }else if($("select#gen").val()=="0"){
+                        $('#myModal5').modal('show');
                         $("select#gen").focus();
                     }else{
                     var envioDatos = 'action=registrarUsuario&usuario='+usuario+		
@@ -55,13 +58,12 @@
                                         '&correo='+correo+
                                         '&rol='+rol+
                                         '&genero='+genero;
-					alert(envioDatos);
+					
 					$.ajax({
 						type : 'POST',       //necesitamos definir como vamos a pasar los datos
 						data : envioDatos,   // enviar la variable o los datos que requiera php
 						url  : 'phpFiles/sentenciasSql.php',
-						success: function(requerimiento){  // en versiones de jQuery responseText						
-						alert(requerimiento);
+						success: function(requerimiento){  // en versiones de jQuery responseText											
 							if((requerimiento)==1)
 							{					
 								alert("hecho");
@@ -82,7 +84,84 @@
 </head>
 <body background="images/img1.jpg"   style="background-color: #e5e6f0;">
 
-	<form style="
+<div class="modal fade" id="myModal2" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header ">
+          <h4 class="modal-title col-11 text-center"> Aviso</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          Faltan Datos Necesarios <!-- Texto, componentes, formulario completo -->
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="myModal3" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header ">
+          <h4 class="modal-title col-11 text-center"> Aviso</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          Las contrseñas tienen que ser iguales <!-- Texto, componentes, formulario completo -->
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="myModal4" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header ">
+          <h4 class="modal-title col-11 text-center"> Aviso</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          Tiene que elegir un Perfil <!-- Texto, componentes, formulario completo -->
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="myModal5" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header ">
+          <h4 class="modal-title col-11 text-center"> Aviso</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+        Tiene que elegir un Genero <!-- Texto, componentes, formulario completo -->
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+	<form enctype="multipart/form-data" style="
    text-align: center;
    vertical-align:center;
    display: flex;

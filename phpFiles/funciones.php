@@ -41,4 +41,23 @@ function sqlDeterminarRol(){
         }
         return $cadena;
 }
+
+function metodo($nombre,$song)
+{    
+    
+    include_once("conexion.php");
+    $usr = $_SESSION['usuario'];
+    $sql="Insert into canciones values
+            (?,?,?)";
+	$parametros=array($nombre,$song,$usr);
+	$con=conexionBD();
+	$resultado=sqlsrv_query($con, $sql, $parametros);
+	$op=0;
+	if($resultado)
+	{
+		$op=1;
+	}
+	return $op;
+
+}
 ?>

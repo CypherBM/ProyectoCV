@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Login</title>    
+	<title>Login</title>   
+	<script src="js/jquery35.js"></script>
 	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">	
 		
@@ -26,14 +27,13 @@
 	<link rel="icon" href="icon/icono.png" type="image/gif" />
 
 	<link rel="stylesheet" type="text/css" href="style.css">
-	<script src="js/jquery35.js"></script>
     <script type="text/javascript">
 		$(document).ready(function(){	
 			$("#ingresar").click(function(){
 				var usuario=$("#usuario").val();
 				var clave=$("#clave").val();
 			if(usuario==""||clave==""){
-				alert("faltan datos");
+				$('#myModal2').modal('show');
 			}else{
 				var envioDatos = 'action=comprobarUsuario&usuario='+usuario+		
 										'&clave='+clave;
@@ -59,8 +59,31 @@
 </head>
 <body background="images/img1.jpg" style="background-color: #e5e6f0;">
 
+<div class="modal fade" id="myModal2" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header ">
+          <h4 class="modal-title col-11 text-center"> Aviso</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          Falta el campo cedula y contraseña <!-- Texto, componentes, formulario completo -->
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">	
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
 		
-	<form style="
+	<form enctype="multipart/form-data" style="
    text-align: center;
    vertical-align:center;
    margin-top:10%;

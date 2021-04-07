@@ -8,6 +8,7 @@ include_once("phpFiles/sentenciasSql.php");
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="js/jquery35.js"></script>
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">	
 		
@@ -32,11 +33,18 @@ include_once("phpFiles/sentenciasSql.php");
 	<link rel="icon" href="icon/icono.png" type="image/gif" />
 
 	<link rel="stylesheet" type="text/css" href="style.css">
-	<script src="js/jquery35.js"></script>
+	
     <script type="text/javascript">
     $(document).ready(function(){
-        
-    }
+        $("#nose").click(function(){
+            if($("#nose").val()=="artista"){
+                $("#myModal").modal('show');   
+            }else{
+                alert("no se puede ingrsar musica");             
+            }
+
+        });
+    
     });
     
     </script>
@@ -44,7 +52,33 @@ include_once("phpFiles/sentenciasSql.php");
 
 </head>
 <body>
-<input type="hidden" id="nose"  value="<?php
+<div class="modal fade" id="myModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header ">
+          <h3 class="modal-title col-11 text-center"> Ingreso de musica</h3>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <embed src="crud.php" width="100%" height="250px" >
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">          		
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+
+<input type="button" class="btn btn-danger" data-toggle="modal"  id="nose"  value="<?php
 echo determinarRol();
     ?>">
     
