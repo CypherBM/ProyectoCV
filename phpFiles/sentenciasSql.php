@@ -14,6 +14,21 @@ if(isset($_POST['action']) && $_POST['action']=='comprobarUsuario')
     //if($resultado>)
     echo $resultado;
 }
+if(isset($_POST['action']) && $_POST['action']=='InsertarCancion'){		
+        
+		$nombre = $_POST["nombre"];
+		if(is_uploaded_file($_FILES['cancion']['tmp_name'])){
+			$nombreArchivo=$_FILES['cancion']['tmp_name'];
+			$nombrePath="../canciones/".$_FILES['cancion']['name'];
+			$respuesta = metodo($nombre,$nombrePath);
+			if(move_uploaded_file($nombreArchivo,$nombrePath)&& $respuesta ==1){
+			   return "archivo subido";
+			}else{
+			   return "archivo no subido";
+			}
+		}
+       
+	}
 if(isset($_POST['action']) && $_POST['action']=='registrarUsuario')
 {
     $usuario = $_POST["usuario"];
