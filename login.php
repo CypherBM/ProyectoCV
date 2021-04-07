@@ -46,7 +46,7 @@
               alert(requerimiento);
 							if((requerimiento)==1)
 							{					
-								alert("hecho");
+								window.location.replace("principal.php");
 							}else if((requerimiento)!==1){
 								alert("contraseña o usuario incorrectos");
 							}

@@ -22,10 +22,15 @@ if(isset($_POST['action']) && $_POST['action']=='registrarUsuario')
     $rol=$_POST["rol"];
     $genero=$_POST["genero"];
     $correo=$_POST["correo"];
+    $_SESSION["rol"]=$rol;
     $_SESSION["usuario"]=$usuario;
     //$resultado="no";
     $resultado = registrarUsuario($usuario,$clave,$nombre,$genero,$rol,$correo);
     //if($resultado>)
     echo $resultado;
+}
+
+function determinarRol(){
+  return sqlDeterminarRol();
 }
 ?>

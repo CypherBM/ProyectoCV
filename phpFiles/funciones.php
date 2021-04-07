@@ -27,4 +27,18 @@ function registrarUsuario($usuario,$clave,$nombre,$genero,$rol,$correo){
         }
         return $contador;
 }
+
+function sqlDeterminarRol(){
+        $usr = $_SESSION['usuario'];
+        include_once("conexion.php");
+        $sql="select perfilUsu,nombreUsu from usuario2 where idUsu=?";
+        $parametros=array($usr);	
+        $con = conexionBD();
+        $resultado = sqlsrv_query($con, $sql,$parametros);
+        $cadena="";
+        while ($fila = sqlsrv_fetch_array($resultado, SQLSRV_FETCH_ASSOC)) {
+            $cadena.=''.$fila["perfilUsu"].'';
+        }
+        return $cadena;
+}
 ?>
