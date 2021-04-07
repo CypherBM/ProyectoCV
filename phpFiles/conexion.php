@@ -1,8 +1,15 @@
 <?php
+	//sqlsrv_connect // para generar la conexión
+	//sqlsrv_errors(); // muestra errores, no necesita parámetros
+	//sqlsrv_query() // ejecutar las sentencias sql"select * from usuarios" o 'select * from usuarios'
 
-function conexionBD(){
+	/**
+	 * 
+	 */
+	
+	function conexionBD(){
 		$nombreServidor = "localhost";
-		$parametrosConexion = array('Database' => 'proyecto','UID'=>'sa','PWD'=>'bemn2000!' );
+		$parametrosConexion = array('Database' => 'prueba','UID'=>'sa','PWD'=>'1a9i9i8h' );
 		$conexion = sqlsrv_connect($nombreServidor,$parametrosConexion);
 		if($conexion)
 		{
@@ -14,6 +21,11 @@ function conexionBD(){
 			die(print_r(sqlsrv_errors(),true));
 
 		}
-    }
 
+		return $conexion;
+	}
+
+	
+
+	  
 ?>
