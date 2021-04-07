@@ -54,15 +54,9 @@
                             <div class="limit-box">
                                 <nav class="main-menu">
                                     <ul class="menu-area-main">
-<<<<<<< HEAD
-                                        <li class="active"> <a href="index.php">Inicio</a> </li>
-                                        <li> <a href="contact.html">Iniciar Sesion</a></li>
-                                        <li> <a href="#contact">Registrarse</a> </li>
-=======
                                         <li class="active"> <a href="index.php">Inicio</a> </li>                                        
                                         <li> <a href="login.php">Iniciar Sesion</a> </li>
                                         <li> <a href="registro.php">Registrarse</a> </li>                                        
->>>>>>> feature2
                                     </ul>
                                 </nav>
                             </div>
