@@ -81,7 +81,6 @@
             <div class="container">
 
                 <div class="text-bg relative">
-                    <br><br><br>
                     <strong>
                         <h1><br><br>Tu traes la pasión, Music Hub te trae la música</h1>
                     </strong>
