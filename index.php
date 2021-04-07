@@ -55,8 +55,8 @@
                                 <nav class="main-menu">
                                     <ul class="menu-area-main">
                                         <li class="active"> <a href="index.php">Inicio</a> </li>
-                                        <li> <a href="contact.html">Registrarse</a> </li>
-                                        <li> <a href="#contact">Iniciar Sesion</a> </li>
+                                        <li> <a href="contact.html">Iniciar Sesion</a></li>
+                                        <li> <a href="#contact">Registrarse</a> </li>
                                     </ul>
                                 </nav>
                             </div>

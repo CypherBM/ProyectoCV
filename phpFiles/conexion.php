@@ -1,8 +1,8 @@
 <?php
 
 function conexionBD(){
-		$nombreServidor = "proyectocv.mssql.somee.com";
-		$parametrosConexion = array('Database' => 'proyectocv','UID'=>'ProyectoCV_SQLLogin_1','PWD'=>'s9io94kigw' );
+		$nombreServidor = "localhost";
+		$parametrosConexion = array('Database' => 'proyecto','UID'=>'sa','PWD'=>'bemn2000!' );
 		$conexion = sqlsrv_connect($nombreServidor,$parametrosConexion);
 		if($conexion)
 		{
