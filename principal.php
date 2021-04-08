@@ -1,15 +1,29 @@
 <!DOCTYPE html>
 <html lang="es">
+<?php
+	if(!isset($_SESSION)){
 
+	}
+	session_start();
+
+	include_once("phpFiles/sentenciasSql.php");	
+	
+
+	if(!isset($_SESSION["usuario"])){
+		header('Location: index.php');
+	}else{
+	
+?>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Toda tu musica en un solo lugar</title>
+    <script type="text/javascript" src="js/jquery35.js"></script>
     <link rel="StyleSheet" href="bootstrap/css/bootstrap.css">
     <link rel="StyleSheet" href="styles/stylePrincipal.css">
     <link rel="StyleSheet" href="styles/slider.css">
-    <script type="text/javascript" src="js/jquery35.js"></script>
+    <link rel="icon" href="icon/icono.png" type="image/gif" />
     <script type="text/javascript" src="js/slider.js"></script>
     <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
     <script src="https://kit.fontawesome.com/292edbdf21.js" crossorigin="anonymous"></script>
@@ -26,11 +40,109 @@
                     $('#autoWidth').removeClass('cS-hidden');
                 }
             });
+
+            $("#nose").click(function(){
+            if($("#nose").val()=="Subir canciones"){
+                $("#myModal").modal('show');   
+            }
+
         });
+        $("#salir").click(function(){
+		var envioDatos="";
+				
+					$.ajax({
+						type : 'POST',       //necesitamos definir como vamos a pasar los datos
+						data : envioDatos,   // enviar la variable o los datos que requiera php
+						url  : 'phpFiles/cerrar.php',
+						success: function(requerimiento){  // en versiones de jQuery responseTex
+						if((requerimiento)=="1"){
+							window.open("principal.php","_self");
+						}
+					}	
+
+		  });
+	});
+    
+    
+    });
     </script>
 </head>
 
 <body>
+ <!-- ========================================================== Modales-->
+<div class="modal fade" id="myModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header ">
+          <h3 class="modal-title col-11 text-center"> Ingreso de musica</h3>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <embed src="crud.php" width="100%" height="250px" >
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">          		
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="myModal1" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header ">
+          <h3 class="modal-title col-11 text-center"> Ingreso de musica</h3>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          !Aqui podrias añadir una cancion pero no eres un artista¡ 
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">          		
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="myModal2" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header ">
+          <h3 class="modal-title col-11 text-center">AVISO</h3>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+                ¿Desea cerrar la sesión? 
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">          		
+          <a type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</a>
+          <a type="button" class="btn btn-danger" href="index.php" id="salir">Logout</a>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <!-- ========================================================== Modales-->
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
@@ -71,14 +183,14 @@
 
                     <!-- =============================================================== RIGHT SIDE CONTENT -->
                     <ul class="navbar-nav ml-auto">
+                    
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Usuario
-                            </a>
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo nombreBase(); ?></a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Ajustes</a>
+                                <input type="button" class="btn btn-white" border-width:0px; border-color:White; data-toggle="modal"  id="nose"  value="<?php echo determinarRol();?>">                                
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Salir</a>
+                                <a class="dropdown-item" data-toggle="modal" data-target="#myModal2">Salir</a>
+                                
                             </div>
                         </li>
                     </ul>
@@ -257,3 +369,6 @@
 </body>
 
 </html>
+<?php
+}
+?>

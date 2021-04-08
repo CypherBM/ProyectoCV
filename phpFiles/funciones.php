@@ -37,7 +37,12 @@ function sqlDeterminarRol(){
         $resultado = sqlsrv_query($con, $sql,$parametros);
         $cadena="";
         while ($fila = sqlsrv_fetch_array($resultado, SQLSRV_FETCH_ASSOC)) {
-            $cadena.=''.$fila["perfilUsu"].'';
+            if($fila["perfilUsu"]=="artista"){
+                $cadena.='Subir canciones';
+            }else{
+                $cadena.='  Disfruta de la aplicacion ';
+            }
+            
         }
         return $cadena;
 }
@@ -59,5 +64,25 @@ function metodo($nombre,$song)
 	}
 	return $op;
 
+}
+function sqlNombreBase(){
+    $usr = $_SESSION['usuario'];
+    include_once("conexion.php");
+    $sql="select nombreUsu   
+    from usuario2 where idUsu=?";
+    $parametros=array($usr);	
+    $con = conexionBD();
+    $resultado = sqlsrv_query($con, $sql,$parametros);
+    $cadena="";
+    while ($fila = sqlsrv_fetch_array($resultado, SQLSRV_FETCH_ASSOC)) {
+        $cadena.='								  
+                  <div >
+                  <table>																					
+                    <td>'.$fila["nombreUsu"].'</td>
+                  </table>
+                  </div>			  							  
+                  ';
+    }
+    return $cadena;
 }
 ?>
