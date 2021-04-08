@@ -52,4 +52,7 @@ function determinarRol(){
 function cargarCanciones(){
     return sqlcargarCanciones();
 }
+	function nombreBase(){
+		return sqlNombreBase();
+	}
 ?>

@@ -37,18 +37,18 @@
 			}else{
 				var envioDatos = 'action=comprobarUsuario&usuario='+usuario+		
 										'&clave='+clave;
-					alert(envioDatos);
+
 					$.ajax({
 						type : 'POST',       //necesitamos definir como vamos a pasar los datos
 						data : envioDatos,   // enviar la variable o los datos que requiera php
 						url  : 'phpFiles/sentenciasSql.php',
 						success: function(requerimiento){  // en versiones de jQuery responseText		
-              alert(requerimiento);
+              
 							if((requerimiento)==1)
 							{					
 								window.location.replace("principal.php");
 							}else if((requerimiento)!==1){
-								alert("contraseña o usuario incorrectos");
+								$('#myModal3').modal('show');
 							}
 						}
 					});
@@ -77,6 +77,24 @@
         <!-- Modal footer -->
         <div class="modal-footer">	
           <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="myModal3" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header ">
+          <h4 class="modal-title col-11 text-center"> Aviso</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+        Los datos ingresados son incorrectos <!-- Texto, componentes, formulario completo -->
         </div>
         
       </div>

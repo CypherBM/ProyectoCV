@@ -4,17 +4,32 @@ include_once('phpFiles/sentenciasSql.php');
 
 <!DOCTYPE html>
 <html lang="es">
+<?php
+	if(!isset($_SESSION)){
 
+	}
+	session_start();
+
+	include_once("phpFiles/sentenciasSql.php");	
+	
+
+	if(!isset($_SESSION["usuario"])){
+		header('Location: index.php');
+	}else{
+	
+?>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Toda tu musica en un solo lugar</title>
+    <script type="text/javascript" src="js/jquery35.js"></script>
     <link rel="StyleSheet" href="bootstrap/css/bootstrap.css">
     <link rel="StyleSheet" href="styles/stylePrincipal.css">
     <link rel="StyleSheet" href="styles/slider.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script type="text/javascript" src="js/jquery35.js"></script>
+    <link rel="icon" href="icon/icono.png" type="image/gif" />
     <script type="text/javascript" src="js/slider.js"></script>
     <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
     <script src="https://kit.fontawesome.com/292edbdf21.js" crossorigin="anonymous"></script>
@@ -31,7 +46,31 @@ include_once('phpFiles/sentenciasSql.php');
                     $('#autoWidth').removeClass('cS-hidden');
                 }
             });
+
+            $("#nose").click(function(){
+            if($("#nose").val()=="Subir canciones"){
+                $("#myModal").modal('show');   
+            }
+
         });
+        $("#salir").click(function(){
+		var envioDatos="";
+				
+					$.ajax({
+						type : 'POST',       //necesitamos definir como vamos a pasar los datos
+						data : envioDatos,   // enviar la variable o los datos que requiera php
+						url  : 'phpFiles/cerrar.php',
+						success: function(requerimiento){  // en versiones de jQuery responseTex
+						if((requerimiento)=="1"){
+							window.open("principal.php","_self");
+						}
+					}	
+
+		  });
+	});
+    
+    
+    });
     </script>
 
     <script type="text/javascript">
@@ -59,7 +98,6 @@ include_once('phpFiles/sentenciasSql.php');
 </head>
 
 <body>
-
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
@@ -100,14 +138,14 @@ include_once('phpFiles/sentenciasSql.php');
 
                     <!-- =============================================================== RIGHT SIDE CONTENT -->
                     <ul class="navbar-nav ml-auto">
+                    
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Usuario
-                            </a>
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo nombreBase(); ?></a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Ajustes</a>
+                                <input type="button" class="btn btn-white" border-width:0px; border-color:White; data-toggle="modal"  id="nose"  value="<?php echo determinarRol();?>">                                
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i> Salir</a>
+                                <a class="dropdown-item" data-toggle="modal" data-target="#myModal2"> <i class="fas fa-sign-out-alt"></i> Salir</a>
+                                
                             </div>
                         </li>
                     </ul>
@@ -228,3 +266,6 @@ include_once('phpFiles/sentenciasSql.php');
 </body>
 
 </html>
+<?php
+}
+?>
