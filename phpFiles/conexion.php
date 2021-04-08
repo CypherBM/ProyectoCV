@@ -9,7 +9,7 @@
 	
 	function conexionBD(){
 		$nombreServidor = "localhost";
-		$parametrosConexion = array('Database' => 'prueba','UID'=>'sa','PWD'=>'1a9i9i8h' );
+		$parametrosConexion = array('Database' => 'proyecto','UID'=>'sa','PWD'=>'bemn2000!' );
 		$conexion = sqlsrv_connect($nombreServidor,$parametrosConexion);
 		if($conexion)
 		{

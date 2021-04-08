@@ -48,4 +48,8 @@ if(isset($_POST['action']) && $_POST['action']=='registrarUsuario')
 function determinarRol(){
   return sqlDeterminarRol();
 }
+
+function cargarCanciones(){
+    return sqlcargarCanciones();
+}
 ?>

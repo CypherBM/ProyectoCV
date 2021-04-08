@@ -60,4 +60,35 @@ function metodo($nombre,$song)
 	return $op;
 
 }
+
+function sqlcargarCanciones()
+{
+	$sql = "select * from canciones";
+	$con = conexionBD();
+	$resultado = sqlsrv_query($con, $sql);
+	$cadena = "";
+	//$indice = 1;
+	while ($fila = sqlsrv_fetch_array($resultado, SQLSRV_FETCH_ASSOC)) {
+		$cadena .= "<li class='item-b'>
+                    <div class='box'>
+                    <div class='slide-img'>
+                    <img src='portadas/".$fila['imagenCan']."'>
+                    <div class='overlay'>
+                    <a href='javascript:void();' class='album-poster buy-btn' data-switch=".$fila['idCan']."><i class='fas fa-play'></i></a>
+                    </div>
+                    </div>
+                    <div class='detail-box'>
+                    <div class='type'>
+                    <strong>
+                        <p>".$fila['nombreCan']."</p>
+                    </strong>
+                    <span>".$fila['idArtista']."</span>
+                </div>
+                <a href='canciones/".$fila['urlCan']."' class='price' download='".$fila['nombreCan']."'><i class='far fa-arrow-alt-circle-down'></i></a>
+            </div>
+        </div>
+    </li>";
+	}
+	return $cadena;
+}
 ?>
