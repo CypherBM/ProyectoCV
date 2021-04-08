@@ -63,12 +63,12 @@
 						type : 'POST',       //necesitamos definir como vamos a pasar los datos
 						data : envioDatos,   // enviar la variable o los datos que requiera php
 						url  : 'phpFiles/sentenciasSql.php',
-						success: function(requerimiento){  // en versiones de jQuery responseText											
+						success: function(requerimiento){  // en versiones de jQuery responseText				             					
 							if((requerimiento)==1)
 							{					
-								alert("hecho");
+                window.location.replace("login.php");								
 							}else if((requerimiento)!==1){
-								alert("algun campo esta mal ingresado")
+                $('#myModal6').modal('show');
 							}
 						}
 					});	
@@ -159,6 +159,26 @@
       </div>
     </div>
   </div>
+  <div class="modal fade" id="myModal6" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header ">
+          <h4 class="modal-title col-11 text-center"> Aviso</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+        Los datos no fueron ingresados conectese con un experto <!-- Texto, componentes, formulario completo -->
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+  
 
 
 	<form enctype="multipart/form-data" style="
