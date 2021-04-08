@@ -22,13 +22,15 @@ if (!isset($_SESSION["usuario"])) {
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Toda tu musica en un solo lugar</title>
+        <title>Artistas</title>
         <script type="text/javascript" src="js/jquery35.js"></script>
         <link rel="StyleSheet" href="bootstrap/css/bootstrap.css">
         <link rel="StyleSheet" href="styles/stylePrincipal.css">
+        <link rel="StyleSheet" href="styles/slider.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <script type="text/javascript" src="js/jquery35.js"></script>
-        <link rel="icon" href="icon/icono.png" type="image/gif"/>
+        <link rel="icon" href="icon/icono.png" type="image/gif" />
+        <script type="text/javascript" src="js/slider.js"></script>
         <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
         <script src="https://kit.fontawesome.com/292edbdf21.js" crossorigin="anonymous"></script>
         <!--- APLAYER SCRIPTS --->
@@ -36,6 +38,15 @@ if (!isset($_SESSION["usuario"])) {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.css" integrity="sha512-CIYsJUa3pr1eoXlZFroEI0mq0UIMUqNouNinjpCkSWo3Bx5NRlQ0OuC6DtEB/bDqUWnzXc1gs2X/g52l36N5iw==" crossorigin="anonymous" />
 
         <script type="text/javascript">
+            $(document).ready(function() {
+                $('#autoWidth').lightSlider({
+                    autoWidth: true,
+                    loop: true,
+                    onSliderLoad: function() {
+                        $('#autoWidth').removeClass('cS-hidden');
+                    }
+                });
+
                 $("#nose").click(function() {
                     if ($("#nose").val() == "Subir canciones") {
                         $("#myModal").modal('show');
@@ -150,59 +161,19 @@ if (!isset($_SESSION["usuario"])) {
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h3>Nuestro Repertorio</h3>
+                        <h3>Catálogo de artistas</h3>
                     </div>
-                    <?php echo cargarCanciones(); ?>
                 </div>
             </div>
 
+            <!-- =============================================================== SLIDER BOX -->
+            <section class="slider">
+                <ul id="autoWidth" class="cs-hidden">
+                    <?php echo cargarCanciones(); ?>
+                </ul>
+            </section>
         </div>
 
-
-        <div id="aplayer"></div>
-
-
-        <script>
-            // NOW I CLICK album-poster TO GET CURRENT SONG ID
-            $(".album-poster").on('click', function(e) {
-                var dataSwitchId = $(this).attr('data-switch');
-                //console.log(dataSwitchId);
-
-                // and now i use aplayer switch function see
-                ap.list.switch(dataSwitchId); //this is static id but i use dynamic 
-
-                // aplayer play function
-                // when i click any song to play
-                ap.play();
-
-                // click to slideUp player see
-                $("#aplayer").addClass('showPlayer');
-            });
-
-            const ap = new APlayer({
-                container: document.getElementById('aplayer'),
-                listFolded: true,
-                //theme: '#b7daff',
-                volume: 0.7,
-                autoplay: false,
-                //fixed: true,
-                audio: [{
-                        name: 'Stronger',
-                        artist: 'Stonebank ft Emel',
-                        url: 'canciones/Stronger (feat. Emel).mp3',
-                        cover: 'https://geo-media.beatport.com/image_size/1400x1400/37d71724-1d64-474f-b432-59e82f6c51cf.jpg'
-                    },
-                    {
-                        name: 'Si Estuviesemos Juntos',
-                        artist: 'Bad Bunny',
-                        url: 'canciones/Si Estuviesemos Juntos.mp3',
-                        cover: 'https://images.pexels.com/photos/1699161/pexels-photo-1699161.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
-                    }
-
-
-                ]
-            });
-        </script>
 
         <!-- Modal -->
         <div class="modal fade" id="modalBusqueda" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

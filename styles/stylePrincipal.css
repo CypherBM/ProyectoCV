@@ -3,17 +3,17 @@ body {
   font-family: Open sans;
 }
 
-/*img {
+.img-card {
   width: 100%;
   min-height: 250px;
-}*/
+}
 .main {
   padding: 40px 0;
 }
 
-/*.col-md-3 {
+.col-md-3 {
   margin-bottom: 40px;
-}*/
+}
 .album-poster {
   position: relative;
   display: block;
@@ -26,6 +26,30 @@ body {
   box-shadow: none;
   transform: scale(0.98) translateY(5px);
 }
+
+.descarga{
+	color: #333333;
+	font-weight: 600;
+	font-size: 1.1rem;
+	font-family: poppins;
+	letter-spacing: 0.5px;
+}
+
+.detail-box{
+	width: 100%;
+display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 20px;
+	box-sizing: border-box;
+	font-family: calibri;
+}
+
+.type{
+	display: flex;
+	flex-direction: column;
+}
+
 h3 {
   font-size: 34px;
   margin-bottom: 34px;

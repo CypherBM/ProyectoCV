@@ -1,7 +1,8 @@
 <?php
 include_once("conexion.php");
-function comprobacionUsuario($usuario,$clave){
-    $sql = "Select * from usuario2 where idUsu = ? and claveUsu = ?";
+function comprobacionUsuario($usuario, $clave)
+{
+    $sql = "Select * from usuarios where idUsu = ? and claveUsu = ?";
     $parametros = array($usuario, $clave);
     $opcion = array("Scrollable" => SQLSRV_CURSOR_KEYSET);
     $con = conexionBD();
@@ -15,102 +16,96 @@ function comprobacionUsuario($usuario,$clave){
     }
 }
 
-function registrarUsuario($usuario,$clave,$nombre,$genero,$rol,$correo){
-    $sql = "Insert into usuario2 
+function registrarUsuario($usuario, $clave, $nombre, $genero, $rol, $correo)
+{
+    $sql = "Insert into usuarios 
             values(?,?,?,?,?,?)";
-    $parametros = array($usuario,$clave,$nombre,$genero,$rol,$correo);
+    $parametros = array($usuario, $clave, $nombre, $genero, $rol, $correo);
     $con = conexionBD();
     $resultadoQuery = sqlsrv_query($con, $sql, $parametros);
-        $contador = 0;
-        if ($resultadoQuery) {
-            $contador = 1;
-        }
-        return $contador;
+    $contador = 0;
+    if ($resultadoQuery) {
+        $contador = 1;
+    }
+    return $contador;
 }
 
-function sqlDeterminarRol(){
-        $usr = $_SESSION['usuario'];
-        include_once("conexion.php");
-        $sql="select perfilUsu,nombreUsu from usuario2 where idUsu=?";
-        $parametros=array($usr);	
-        $con = conexionBD();
-        $resultado = sqlsrv_query($con, $sql,$parametros);
-        $cadena="";
-        while ($fila = sqlsrv_fetch_array($resultado, SQLSRV_FETCH_ASSOC)) {
-            if($fila["perfilUsu"]=="artista"){
-                $cadena.='Subir canciones';
-            }else{
-                $cadena.='  Disfruta de la aplicacion ';
-            }
-            
+function sqlDeterminarRol()
+{
+    $usr = $_SESSION['usuario'];
+    include_once("conexion.php");
+    $sql = "select perfilUsu,nombreUsu from usuarios where idUsu=?";
+    $parametros = array($usr);
+    $con = conexionBD();
+    $resultado = sqlsrv_query($con, $sql, $parametros);
+    $cadena = "";
+    while ($fila = sqlsrv_fetch_array($resultado, SQLSRV_FETCH_ASSOC)) {
+        if ($fila["perfilUsu"] == "artista") {
+            $cadena .= 'Subir canciones';
+        } else {
+            $cadena .= '  Disfruta de la aplicacion ';
         }
-        return $cadena;
+    }
+    return $cadena;
 }
 
-function metodo($nombre,$song)
-{    
-    
+function metodo($nombre, $song)
+{
+
     include_once("conexion.php");
     $usr = $_SESSION['usuario'];
-    $sql="Insert into canciones values
+    $sql = "Insert into canciones values
             (?,?,?)";
-	$parametros=array($nombre,$song,$usr);
-	$con=conexionBD();
-	$resultado=sqlsrv_query($con, $sql, $parametros);
-	$op=0;
-	if($resultado)
-	{
-		$op=1;
-	}
-	return $op;
-
+    $parametros = array($nombre, $song, $usr);
+    $con = conexionBD();
+    $resultado = sqlsrv_query($con, $sql, $parametros);
+    $op = 0;
+    if ($resultado) {
+        $op = 1;
+    }
+    return $op;
 }
 
 function sqlcargarCanciones()
 {
-	$sql = "select * from canciones";
-	$con = conexionBD();
-	$resultado = sqlsrv_query($con, $sql);
-	$cadena = "";
-	//$indice = 1;
-	while ($fila = sqlsrv_fetch_array($resultado, SQLSRV_FETCH_ASSOC)) {
-		$cadena .= "<li class='item-b'>
-                    <div class='box'>
-                    <div class='slide-img'>
-                    <img src='portadas/".$fila['imagenCan']."'>
-                    <div class='overlay'>
-                    <a href='javascript:void();' class='album-poster buy-btn' data-switch=".$fila['idCan']."><i class='fas fa-play'></i></a>
-                    </div>
-                    </div>
+    $sql = "select * from canciones";
+    $con = conexionBD();
+    $resultado = sqlsrv_query($con, $sql);
+    $cadena = "";
+    //$indice = 1;
+    while ($fila = sqlsrv_fetch_array($resultado, SQLSRV_FETCH_ASSOC)) {
+        $cadena .= "<div class='col-md-3'>
+                    <a href='javascript:void();' class='album-poster' data-switch='" . $fila['idCan'] . "'>
+                    <img class='img-card' src='portadas/" . $fila['imagenCan'] . "'>
+                    </a>
                     <div class='detail-box'>
-                    <div class='type'>
-                    <strong>
-                        <p>".$fila['nombreCan']."</p>
-                    </strong>
-                    <span>".$fila['idArtista']."</span>
-                </div>
-                <a href='canciones/".$fila['urlCan']."' class='price' download='".$fila['nombreCan']."'><i class='far fa-arrow-alt-circle-down'></i></a>
-            </div>
-        </div>
-    </li>";
-	}
-	return $cadena;
+                        <div class='type'>
+                            <h4>".$fila['nombreCan']."</h4>
+                            <p>".$fila['idArtista']."</p>
+                        </div>
+                        <!--price-------->
+                        <a href='canciones/".$fila['urlCan']."' class='descarga' download='".$fila['nombreCan']."'><i class='far fa-arrow-alt-circle-down'></i></a>
+                    </div>
+                    </div>";
+    }
+    return $cadena;
 }
-    
-function sqlNombreBase(){
+
+function sqlNombreBase()
+{
     $usr = $_SESSION['usuario'];
     include_once("conexion.php");
-    $sql="select nombreUsu   
-    from usuario2 where idUsu=?";
-    $parametros=array($usr);	
+    $sql = "select nombreUsu   
+    from usuarios where idUsu=?";
+    $parametros = array($usr);
     $con = conexionBD();
-    $resultado = sqlsrv_query($con, $sql,$parametros);
-    $cadena="";
+    $resultado = sqlsrv_query($con, $sql, $parametros);
+    $cadena = "";
     while ($fila = sqlsrv_fetch_array($resultado, SQLSRV_FETCH_ASSOC)) {
-        $cadena.='								  
+        $cadena .= '								  
                   <div >
                   <table>																					
-                    <td>'.$fila["nombreUsu"].'</td>
+                    <td>' . $fila["nombreUsu"] . '</td>
                   </table>
                   </div>			  							  
                   ';
