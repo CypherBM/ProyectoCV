@@ -393,11 +393,23 @@
 body{
 	margin:0px;
 	padding: 0px;
-	background-color:#eef8ff;
+	background-color:#f7f7f7;
+    font-family: Open sans;
 }
 a{
 	text-decoration:none;
 }
+
+h3 {
+    font-size: 34px;
+    margin-bottom: -100px;
+    border-bottom: 4px solid #e6e6e6;
+    padding-bottom: 5px;
+  }
+
+.main {
+    padding: 20px 0;
+  }
 .box{
 	width:300px;
 	box-shadow: 2px 2px 30px rgba(0,0,0,0.2);

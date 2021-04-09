@@ -23,9 +23,9 @@ if (!isset($_SESSION["usuario"])) {
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Artistas</title>
-        <script type="text/javascript" src="js/jquery35.js"></script>
+        <!--<script type="text/javascript" src="js/jquery35.js"></script>-->
         <link rel="StyleSheet" href="bootstrap/css/bootstrap.css">
-        <link rel="StyleSheet" href="styles/stylePrincipal.css">
+        <!--<link rel="StyleSheet" href="styles/stylePrincipal.css">-->
         <link rel="StyleSheet" href="styles/slider.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <script type="text/javascript" src="js/jquery35.js"></script>
@@ -161,18 +161,44 @@ if (!isset($_SESSION["usuario"])) {
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h3>Catálogo de artistas</h3>
+                        <h3>Catalogo De Artistas</h3>
                     </div>
                 </div>
             </div>
-
-            <!-- =============================================================== SLIDER BOX -->
-            <section class="slider">
-                <ul id="autoWidth" class="cs-hidden">
-                    <?php echo cargarCanciones(); ?>
-                </ul>
-            </section>
         </div>
+
+        <!-- =============================================================== SLIDER BOX -->
+        <section class="slider">
+            <ul id="autoWidth" class="cs-hidden">
+                <!--1------------------------------------>
+                <li class="item-a">
+                    <!--box-slider--------------->
+                    <div class="box">
+                        <!--img-box---------->
+                        <div class="slide-img">
+                            <img alt="1" src="images/1.jpg">
+                            <!--overlayer---------->
+                            <div class="overlay">
+                                <!--buy-btn------>
+                                <a href="#" class="buy-btn">Buy Now</a>
+                            </div>
+                        </div>
+                        <!--detail-box--------->
+                        <div class="detail-box">
+                            <!--type-------->
+                            <div class="type">
+                                <a href="#">Rabbed Cardigan</a>
+                                <span>Noe Arrival</span>
+                            </div>
+                            <!--price-------->
+                            <a href="#" class="price">$23</a>
+
+                        </div>
+
+                    </div>
+                </li>
+            </ul>
+        </section>
 
 
         <!-- Modal -->
@@ -210,7 +236,7 @@ if (!isset($_SESSION["usuario"])) {
 
                     <!-- Modal footer -->
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" id="recarga">Cerrar</button>
                     </div>
 
                 </div>
@@ -258,8 +284,8 @@ if (!isset($_SESSION["usuario"])) {
 
                     <!-- Modal footer -->
                     <div class="modal-footer">
-                        <a type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</a>
-                        <a type="button" class="btn btn-danger" href="index.php" id="salir">Logout</a>
+                        <a type="button" class="btn btn-primary" data-dismiss="modal">No</a>
+                        <a type="button" class="btn btn-danger" href="index.php" id="salir">Si</a>
                     </div>
 
                 </div>

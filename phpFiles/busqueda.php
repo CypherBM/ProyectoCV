@@ -19,5 +19,5 @@ $resultado = sqlsrv_query($con,$sql);
  
     }
 }else{
-    echo "No hay ni vrgas";
+    echo "No se encontraron resultados para tu busqueda";
 }
