@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-	if(!isset($_SESSION)){
-
-	}
-	
 
 	include_once("phpFiles/sentenciasSql.php");	
 	
