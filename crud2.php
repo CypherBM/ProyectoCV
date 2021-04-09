@@ -25,7 +25,7 @@
 				}else{
           var nombre = $("#nombre").val();
         }
-          var cancion = $("#cancion").prop('files')[0];
+          var descripcion=$("#descripcion").val();
         
 				
 
@@ -33,9 +33,9 @@
 
 				var formulario = new FormData();        
 				formulario.append('nombre',nombre);		
-				formulario.append('cancion',cancion);
+				formulario.append('descripcion',descripcion);
        // formulario.append('usuario',usuario);
-				formulario.append('action','InsertarCancion');
+				formulario.append('action','InsertarPlaylist');
         
 				//var respuesta = confirm('¿Está seguro que desea guardar los datos?');
 				
@@ -187,27 +187,23 @@
 
 <form class="col-12" method="POST" enctype="multipart/form-data" id="formulario" name="formulario">
 
-	<div class="table-responsive-md">
-	<table class="table table-hover" style=" margin: auto;
-    width: 10%;
-    border-radius: 20px;border-radius:10px;">
+	
+	<table class="table table-dark table-hover">
  
-		<tr class="table-default">
-			<td style="color:black;">Nombre&nbsp;de&nbsp;la&nbsp;Cancion</td>
-			<td><svg xmlns="http://www.w3.org/2000/svg" width="50" height="16" color="black" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+		<tr class="form-group">
+			<td>Nombre de la Playlist</td>
+			<td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" color="white" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
 	<path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
 	</svg><input type="text" name="nombre" id="nombre"></td>
 		</tr>
-    <tr class="table-default">
-			<td  style="color:black;">Cancion</td>&nbsp;
-			<td><svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" color="black" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
-  <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
-  <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
-</svg>&nbsp;<input type="file" name="cancion" id="cancion" accept="audio/mp3"></td>
+    <tr class="form-group">
+			<td>Descripcion</td>
+			<td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" color="white" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+	<path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+	</svg><input type="text" name="descripcion" id="descripcion"></td>
 		</tr>
 	</table>
-  </div>
-	<input type="button" name="ingresar" id="ingresar" value="Guardar" class="btn btn-danger" data-toggle="modal" data-target="#myModal" style="margin-left: 40%;">
+	<input type="button" name="ingresar" id="ingresar" value="Guardar" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
 	</form>
 
 	

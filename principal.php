@@ -1,13 +1,7 @@
-<?php
-include_once('phpFiles/sentenciasSql.php');
-?>
 
 <!DOCTYPE html>
 <html lang="es">
 <?php
-if (!isset($_SESSION)) {
-}
-//session_start();
 
 include_once("phpFiles/sentenciasSql.php");
 
@@ -22,23 +16,39 @@ if (!isset($_SESSION["usuario"])) {
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Toda tu musica en un solo lugar</title>
+        <title>Artistas</title>
         <script type="text/javascript" src="js/jquery35.js"></script>
         <link rel="StyleSheet" href="bootstrap/css/bootstrap.css">
-        <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
         <link rel="StyleSheet" href="styles/stylePrincipal.css">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">        
-        <link rel="icon" href="icon/icono.png" type="image/gif"/>        
+        <link rel="StyleSheet" href="styles/slider.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+       
+        <link rel="icon" href="icon/icono.png" type="image/gif" />
+        <script type="text/javascript" src="js/slider.js"></script>
+        <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
         <script src="https://kit.fontawesome.com/292edbdf21.js" crossorigin="anonymous"></script>
         <!--- APLAYER SCRIPTS --->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.js" integrity="sha512-RWosNnDNw8FxHibJqdFRySIswOUgYhFxnmYO3fp+BgCU7gfo4z0oS7mYFBvaa8qu+axY39BmQOrhW3Tp70XbaQ==" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.css" integrity="sha512-CIYsJUa3pr1eoXlZFroEI0mq0UIMUqNouNinjpCkSWo3Bx5NRlQ0OuC6DtEB/bDqUWnzXc1gs2X/g52l36N5iw==" crossorigin="anonymous" />
 
         <script type="text/javascript">
+            $(document).ready(function() {
+                $('#autoWidth').lightSlider({
+                    autoWidth: true,
+                    loop: true,
+                    onSliderLoad: function() {
+                        $('#autoWidth').removeClass('cS-hidden');
+                    }
+                });
+
                 $("#nose").click(function() {
                     if ($("#nose").val() == "Subir canciones") {
                         $("#myModal").modal('show');
                     }
+
+                });
+                $("#recarga").click(function() {
+                    window.location.reload('principal.php');
 
                 });
                 $("#salir").click(function() {
@@ -56,6 +66,13 @@ if (!isset($_SESSION["usuario"])) {
 
                     });
                 });
+
+
+            });
+        </script>
+
+        <script type="text/javascript">
+            $(document).ready(function() {
                 $("#busqueda").on('click', function() {
                     var busqueda = $("#buscador").val();
                     //alert(busqueda);
@@ -74,9 +91,8 @@ if (!isset($_SESSION["usuario"])) {
 
                 });
 
-
             });
-        </script>        
+        </script>
     </head>
 
     <body>
@@ -139,6 +155,7 @@ if (!isset($_SESSION["usuario"])) {
             </nav>
         </header>
 
+       
         <div class="main">
             <div class="container">
                 <div class="row">
@@ -197,6 +214,7 @@ if (!isset($_SESSION["usuario"])) {
             });
         </script>
 
+
         <!-- Modal -->
         <div class="modal fade" id="modalBusqueda" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -227,12 +245,12 @@ if (!isset($_SESSION["usuario"])) {
 
                     <!-- Modal body -->
                     <div class="modal-body">
-                        <embed src="crud.php" width="100%" height="250px">
+                        <embed src="crud.php" width="100%" height="215px">
                     </div>
 
                     <!-- Modal footer -->
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" id="recarga">Cerrar</button>
                     </div>
 
                 </div>

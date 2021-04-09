@@ -44,6 +44,16 @@ if(isset($_POST['action']) && $_POST['action']=='registrarUsuario')
     //if($resultado>)
     echo $resultado;
 }
+if(isset($_POST['action']) && $_POST['action']=='InsertarPlaylist')
+{
+ 
+    $nombre=$_POST["nombre"];
+    $descripcion=$_POST["descripcion"];        
+    //$resultado="no";
+    $resultado = registrarPlaylist($nombre,$descripcion);
+    //if($resultado>)
+    echo $resultado;
+}
 
 function determinarRol(){
   return sqlDeterminarRol();
@@ -54,5 +64,8 @@ function cargarCanciones(){
 }
 	function nombreBase(){
 		return sqlNombreBase();
+	}
+    function Listas(){
+		return sqlListas();
 	}
 ?>

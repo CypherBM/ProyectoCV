@@ -1,3 +1,6 @@
+<?php
+include_once('phpFiles/sentenciasSql.php');
+?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -46,6 +49,13 @@ if (!isset($_SESSION["usuario"])) {
                         $("#myModal").modal('show');
                     }
 
+                });
+                $("#recarga").click(function() {
+                    window.location.reload('playlist.php');
+
+                });
+                $("#lista").click(function() {                    
+                        $("#myModalp").modal('show');                
                 });
                 $("#salir").click(function() {
                     var envioDatos = "";
@@ -151,21 +161,42 @@ if (!isset($_SESSION["usuario"])) {
             </nav>
         </header>
 
+       
+       
         <div class="main">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h3>Catálogo de artistas</h3>
-                    </div>
+                        <h3>Nuestras Playlist</h3>
+                        <input type="button" id="lista" value="crear nueva lista">
+                    </div>                   
                 </div>
-            </div>
+            
+<div class="row">
+  <div class="col-2">
+  <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+    <?php
+	echo Listas();
+    ?>
+    </div>
+  </div>
+</div>
 
-            <!-- =============================================================== SLIDER BOX -->
-            <section class="slider">
-                <ul id="autoWidth" class="cs-hidden">
-                    <?php echo cargarCanciones(); ?>
-                </ul>
-            </section>
+            </div>
+<!--      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+  <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
+  <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</a>
+  <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</a>
+  <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>
+</div>
+<div class="tab-content" id="v-pills-tabContent">
+  <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">...</div>
+  <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">...</div>
+  <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
+  <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
+</div>-->
+            
+
         </div>
 
 
@@ -210,7 +241,29 @@ if (!isset($_SESSION["usuario"])) {
                 </div>
             </div>
         </div>
+        <div class="modal fade" id="myModalp" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
 
+                    <!-- Modal Header -->
+                    <div class="modal-header ">
+                        <h3 class="modal-title col-11 text-center">Datos de la Playlist</h3>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <embed src="crud2.php" width="100%" height="250px">
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" id="recarga" data-dismiss="modal">Cerrar</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
         <div class="modal fade" id="myModal1" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">

@@ -55,7 +55,7 @@ function metodo($nombre, $song)
     include_once("conexion.php");
     $usr = $_SESSION['usuario'];
     $sql = "Insert into canciones values
-            (?,?,?)";
+            (?,?,'portada.png',?,'0')";
     $parametros = array($nombre, $song, $usr);
     $con = conexionBD();
     $resultado = sqlsrv_query($con, $sql, $parametros);
@@ -112,3 +112,60 @@ function sqlNombreBase()
     }
     return $cadena;
 }
+function registrarPlaylist($nombre,$descripcion){
+    
+    $sql = "Insert into playlist values
+            (?,?,?)";
+    $parametros = array($nombre, $descripcion,$nombre);
+    $con = conexionBD();
+    $resultado = sqlsrv_query($con, $sql, $parametros);
+    $op = 0;
+    if ($resultado) {
+        $op = 1;
+    }
+    return $op;
+}
+
+function sqlListas(){
+    $sql="select * from playlist";
+    $con = conexionBD();
+    $resultado = sqlsrv_query($con, $sql);
+    $cadena = "";
+    //$indice = 1;
+    while ($fila = sqlsrv_fetch_array($resultado, SQLSRV_FETCH_ASSOC)) {
+        $cadena .= "<button>añadir canciones</button>
+        <a class='nav-link' id='v-pills-profile-tab' data-toggle='pill' href='#".$fila['accion']."' role='tab' aria-controls='v-pills-profile' aria-selected='false'>".$fila['nombrePlay']."</a>            
+            </div>
+        <div class='tab-content' id='v-pills-tabContent'>
+                    <div class='tab-pane fade' id=".$fila['accion']." role='tabpanel' aria-labelledby='list-profile-list'>".sqlcargarCancionesLista($fila['idPlay'])."</div>
+                    ";
+    }
+    return $cadena;
+}
+function sqlcargarCancionesLista($id)
+{
+    $sql = "select * from canciones where idPlay=?";
+    $parametros=array($id);
+    $con = conexionBD();
+    $resultado = sqlsrv_query($con, $sql,$parametros);
+    $cadena = "";
+    //$indice = 1;
+    while ($fila = sqlsrv_fetch_array($resultado, SQLSRV_FETCH_ASSOC)) {
+        $cadena .= "<div class='col-md-3'>
+                    <a href='javascript:void();' class='album-poster' data-switch='" . $fila['idCan'] . "'>
+                    <img class='img-card' src='portadas/" . $fila['imagenCan'] . "'>
+                    </a>
+                    <div class='detail-box'>
+                        <div class='type'>
+                            <h4>".$fila['nombreCan']."</h4>
+                            <p>".$fila['idArtista']."</p>
+                        </div>
+                        <!--price-------->
+                        <a href='canciones/".$fila['urlCan']."' class='descarga' download='".$fila['nombreCan']."'><i class='far fa-arrow-alt-circle-down'></i></a>
+                    </div>
+                    </div>";
+    }
+    return $cadena;
+}
+
+
