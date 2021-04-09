@@ -2,7 +2,7 @@
 include_once("conexion.php");
 function comprobacionUsuario($usuario, $clave)
 {
-    $sql = "Select * from usuarios where idUsu = ? and claveUsu = ?";
+    $sql = "Select * from usuario2 where idUsu = ? and claveUsu = ?";
     $parametros = array($usuario, $clave);
     $opcion = array("Scrollable" => SQLSRV_CURSOR_KEYSET);
     $con = conexionBD();
@@ -18,7 +18,7 @@ function comprobacionUsuario($usuario, $clave)
 
 function registrarUsuario($usuario, $clave, $nombre, $genero, $rol, $correo)
 {
-    $sql = "Insert into usuarios 
+    $sql = "Insert into usuario2 
             values(?,?,?,?,?,?)";
     $parametros = array($usuario, $clave, $nombre, $genero, $rol, $correo);
     $con = conexionBD();
@@ -34,7 +34,7 @@ function sqlDeterminarRol()
 {
     $usr = $_SESSION['usuario'];
     include_once("conexion.php");
-    $sql = "select perfilUsu,nombreUsu from usuarios where idUsu=?";
+    $sql = "select perfilUsu,nombreUsu from usuario2 where idUsu=?";
     $parametros = array($usr);
     $con = conexionBD();
     $resultado = sqlsrv_query($con, $sql, $parametros);
@@ -96,7 +96,7 @@ function sqlNombreBase()
     $usr = $_SESSION['usuario'];
     include_once("conexion.php");
     $sql = "select nombreUsu   
-    from usuarios where idUsu=?";
+    from usuario2 where idUsu=?";
     $parametros = array($usr);
     $con = conexionBD();
     $resultado = sqlsrv_query($con, $sql, $parametros);

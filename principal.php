@@ -25,11 +25,10 @@ if (!isset($_SESSION["usuario"])) {
         <title>Toda tu musica en un solo lugar</title>
         <script type="text/javascript" src="js/jquery35.js"></script>
         <link rel="StyleSheet" href="bootstrap/css/bootstrap.css">
-        <link rel="StyleSheet" href="styles/stylePrincipal.css">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <script type="text/javascript" src="js/jquery35.js"></script>
-        <link rel="icon" href="icon/icono.png" type="image/gif"/>
         <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+        <link rel="StyleSheet" href="styles/stylePrincipal.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">        
+        <link rel="icon" href="icon/icono.png" type="image/gif"/>        
         <script src="https://kit.fontawesome.com/292edbdf21.js" crossorigin="anonymous"></script>
         <!--- APLAYER SCRIPTS --->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.js" integrity="sha512-RWosNnDNw8FxHibJqdFRySIswOUgYhFxnmYO3fp+BgCU7gfo4z0oS7mYFBvaa8qu+axY39BmQOrhW3Tp70XbaQ==" crossorigin="anonymous"></script>
@@ -57,13 +56,6 @@ if (!isset($_SESSION["usuario"])) {
 
                     });
                 });
-
-
-            });
-        </script>
-
-        <script type="text/javascript">
-            $(document).ready(function() {
                 $("#busqueda").on('click', function() {
                     var busqueda = $("#buscador").val();
                     //alert(busqueda);
@@ -82,8 +74,9 @@ if (!isset($_SESSION["usuario"])) {
 
                 });
 
+
             });
-        </script>
+        </script>        
     </head>
 
     <body>
