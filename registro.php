@@ -115,7 +115,7 @@
         
         <!-- Modal body -->
         <div class="modal-body">
-          Las contrseñas tienen que ser iguales <!-- Texto, componentes, formulario completo -->
+          Las contraseñas tienen que ser iguales <!-- Texto, componentes, formulario completo -->
         </div>
         
       </div>
@@ -266,7 +266,7 @@
     text-align: left;
     color: #333;
     background: rgb(255, 255, 255); width: 300px; font-face:Helvetica;">
-    <option value="0">seleccione una Rol</option>
+    <option value="0">Seleccione Un Rol</option>
     <option value="artista">artista</option>
     <option value="usuario">usuario</option>
     </select>
@@ -284,7 +284,7 @@
     text-align: left;
     color: #333;
     background: rgb(255, 255, 255); width: 300px; font-face:Helvetica;">
-    <option value="0">seleccione una genero</option>
+    <option value="0">Seleccione Un Genero</option>
     <option value="m">Masculino</option>
     <option value="f">Femenino</option>
     <option value="i">Otros</option>

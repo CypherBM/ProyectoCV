@@ -54,7 +54,7 @@
 						data : formulario,   // enviar la variable o los datos que requiera php
 						url  : 'phpFiles/SentenciasSql.php',
 						success: function(requerimiento){  // en versiones de jQuery responseText
-							alert(requerimiento);
+							//alert(requerimiento);
 							$('#myModal').modal('hide');
                 window.location.reload('crud.php');
 						}

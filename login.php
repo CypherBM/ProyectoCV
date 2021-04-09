@@ -71,7 +71,7 @@
         
         <!-- Modal body -->
         <div class="modal-body">
-          Falta el campo cedula y contraseña <!-- Texto, componentes, formulario completo -->
+          Falta el campo usuario y/o contraseña <!-- Texto, componentes, formulario completo -->
         </div>
         
         <!-- Modal footer -->

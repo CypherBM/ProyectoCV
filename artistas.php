@@ -107,13 +107,6 @@ if (!isset($_SESSION["usuario"])) {
                             </li>
 
                         </ul>
-
-                        <ul class="navbar-nav mr-auto">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="playlist.php"><i class="material-icons md-36">queue_music</i>Playlist</a>
-                            </li>
-
-                        </ul>
                         <!-- ========================================================== CENTER CONTENT -->
                         <ul class="navbar-nav mr-auto ml-auto">
                             <div class="form-inline my-2 my-lg-0">
