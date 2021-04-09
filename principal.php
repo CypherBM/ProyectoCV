@@ -3,7 +3,7 @@
 <html lang="es">
 <?php
 
-//include_once("phpFiles/sentenciasSql.php");
+include_once("phpFiles/sentenciasSql.php");
 
 
 if (!isset($_SESSION["usuario"])) {
@@ -20,45 +20,36 @@ if (!isset($_SESSION["usuario"])) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Artistas</title>
         <script type="text/javascript" src="js/jquery35.js"></script>
-        <!--<script type="text/javascript" src="js/jquery35.js"></script>-->
-        <link rel="StyleSheet" href="bootstrap/css/bootstrap.css">
+        <script type="text/javascript" src="js/jquery35.js"></script>
+       <link rel="stylesheet" type="text/css" href="css/bootstrap/css/bootstrap.min.css">
+	   <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>	
+		
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+	    <link rel="stylesheet"href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+	    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+        
         <link rel="StyleSheet" href="styles/stylePrincipal.css">
         <link rel="StyleSheet" type="text/css" href="styles/reproductor.scss">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        
-        <link rel="icon" href="icon/icono.png" type="image/gif" />
-        <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">    
+        <link rel="icon" href="icon/icono.png" type="image/gif" />        
         <script src="https://kit.fontawesome.com/292edbdf21.js" crossorigin="anonymous"></script>
-        <!--- APLAYER SCRIPTS --->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.js" integrity="sha512-RWosNnDNw8FxHibJqdFRySIswOUgYhFxnmYO3fp+BgCU7gfo4z0oS7mYFBvaa8qu+axY39BmQOrhW3Tp70XbaQ==" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.css" integrity="sha512-CIYsJUa3pr1eoXlZFroEI0mq0UIMUqNouNinjpCkSWo3Bx5NRlQ0OuC6DtEB/bDqUWnzXc1gs2X/g52l36N5iw==" crossorigin="anonymous" />
+        
         <!--- Scripts Reproductor --->
         <script src="js/jquery.mousewheel.min.js"></script>
         <script src="js/reproductor.js"></script>
 
         <script type="text/javascript">
-            $(document).ready(function() {
-                $('#autoWidth').lightSlider({
-                    autoWidth: true,
-                    loop: true,
-                    onSliderLoad: function() {
-                        $('#autoWidth').removeClass('cS-hidden');
-                    }
-                });
-
+            $(document).ready(function(){               
                 $("#nose").click(function() {
                     if ($("#nose").val() == "Subir canciones") {
                         $("#myModal").modal('show');
                     }
 
                 });
-                $("#recarga").click(function() {
-                    window.location.reload('principal.php');
 
-                });
-             
-
-            $("#salir").click(function() {
+                $("#salir").click(function(){
                 var envioDatos = "";
 
                 $.ajax({
@@ -73,6 +64,12 @@ if (!isset($_SESSION["usuario"])) {
 
                 });
             });
+
+                $("#recarga").click(function(){
+                    window.location.reload('principal.php');
+
+                });                    
+        });
         </script>
 
         <script type="text/javascript">
@@ -132,12 +129,6 @@ if (!isset($_SESSION["usuario"])) {
                 }
             });
         </script>
-        <script>
-            $("#recarga").click(function() {
-                    window.location.reload('principal.php');
-
-                });
-        </script>
 
     </head>
 
@@ -169,12 +160,6 @@ if (!isset($_SESSION["usuario"])) {
 
                         </ul>
 
-                        <ul class="navbar-nav mr-auto">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="playlist.php"><i class="material-icons md-36">queue_music</i>Playlist</a>
-                            </li>
-
-                        </ul>
                         <!-- ========================================================== CENTER CONTENT -->
                         <ul class="navbar-nav mr-auto ml-auto">
                             <div class="form-inline my-2 my-lg-0">

@@ -17,29 +17,29 @@ if (!isset($_SESSION["usuario"])) {
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Artistas</title>
-        <!--<script type="text/javascript" src="js/jquery35.js"></script>-->
-        <link rel="StyleSheet" href="bootstrap/css/bootstrap.css">
+       <script type="text/javascript" src="js/jquery35.js"></script>
+       <link rel="stylesheet" type="text/css" href="css/bootstrap/css/bootstrap.min.css">
+	   <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>	
+		
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+	    <link rel="stylesheet"href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+	    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
         <!--<link rel="StyleSheet" href="styles/stylePrincipal.css">-->
         <link rel="StyleSheet" href="styles/slider.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
        
         <link rel="icon" href="icon/icono.png" type="image/gif" />
         <script type="text/javascript" src="js/slider.js"></script>
-        <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+        
         <script src="https://kit.fontawesome.com/292edbdf21.js" crossorigin="anonymous"></script>
-        <!--- APLAYER SCRIPTS --->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.js" integrity="sha512-RWosNnDNw8FxHibJqdFRySIswOUgYhFxnmYO3fp+BgCU7gfo4z0oS7mYFBvaa8qu+axY39BmQOrhW3Tp70XbaQ==" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.css" integrity="sha512-CIYsJUa3pr1eoXlZFroEI0mq0UIMUqNouNinjpCkSWo3Bx5NRlQ0OuC6DtEB/bDqUWnzXc1gs2X/g52l36N5iw==" crossorigin="anonymous" />
+       
+       
 
         <script type="text/javascript">
             $(document).ready(function() {
-                $('#autoWidth').lightSlider({
-                    autoWidth: true,
-                    loop: true,
-                    onSliderLoad: function() {
-                        $('#autoWidth').removeClass('cS-hidden');
-                    }
-                });
+         
 
                 $("#nose").click(function() {
                     if ($("#nose").val() == "Subir canciones") {

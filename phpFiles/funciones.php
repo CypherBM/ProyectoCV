@@ -34,7 +34,7 @@ function sqlDeterminarRol()
 {
     $usr = $_SESSION['usuario'];
     include_once("conexion.php");
-    $sql = "select perfilUsu,nombreUsu from usuario2 where idUsu=?";
+    $sql = "select perfilUsu from usuario2 where idUsu=?";
     $parametros = array($usr);
     $con = conexionBD();
     $resultado = sqlsrv_query($con, $sql, $parametros);
