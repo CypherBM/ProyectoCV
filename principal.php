@@ -3,7 +3,7 @@
 <html lang="es">
 <?php
 
-include_once("phpFiles/sentenciasSql.php");
+//include_once("phpFiles/sentenciasSql.php");
 
 
 if (!isset($_SESSION["usuario"])) {
@@ -12,24 +12,29 @@ if (!isset($_SESSION["usuario"])) {
 
 ?>
 
+
+
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Artistas</title>
         <script type="text/javascript" src="js/jquery35.js"></script>
+        <!--<script type="text/javascript" src="js/jquery35.js"></script>-->
         <link rel="StyleSheet" href="bootstrap/css/bootstrap.css">
         <link rel="StyleSheet" href="styles/stylePrincipal.css">
-        <link rel="StyleSheet" href="styles/slider.css">
+        <link rel="StyleSheet" type="text/css" href="styles/reproductor.scss">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-       
+        
         <link rel="icon" href="icon/icono.png" type="image/gif" />
-        <script type="text/javascript" src="js/slider.js"></script>
         <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
         <script src="https://kit.fontawesome.com/292edbdf21.js" crossorigin="anonymous"></script>
         <!--- APLAYER SCRIPTS --->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.js" integrity="sha512-RWosNnDNw8FxHibJqdFRySIswOUgYhFxnmYO3fp+BgCU7gfo4z0oS7mYFBvaa8qu+axY39BmQOrhW3Tp70XbaQ==" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.css" integrity="sha512-CIYsJUa3pr1eoXlZFroEI0mq0UIMUqNouNinjpCkSWo3Bx5NRlQ0OuC6DtEB/bDqUWnzXc1gs2X/g52l36N5iw==" crossorigin="anonymous" />
+        <!--- Scripts Reproductor --->
+        <script src="js/jquery.mousewheel.min.js"></script>
+        <script src="js/reproductor.js"></script>
 
         <script type="text/javascript">
             $(document).ready(function() {
@@ -51,23 +56,22 @@ if (!isset($_SESSION["usuario"])) {
                     window.location.reload('principal.php');
 
                 });
-                $("#salir").click(function() {
-                    var envioDatos = "";
+             
 
-                    $.ajax({
-                        type: 'POST', //necesitamos definir como vamos a pasar los datos
-                        data: envioDatos, // enviar la variable o los datos que requiera php
-                        url: 'phpFiles/cerrar.php',
-                        success: function(requerimiento) { // en versiones de jQuery responseTex
-                            if ((requerimiento) == "1") {
-                                window.open("principal.php", "_self");
-                            }
+            $("#salir").click(function() {
+                var envioDatos = "";
+
+                $.ajax({
+                    type: 'POST', //necesitamos definir como vamos a pasar los datos
+                    data: envioDatos, // enviar la variable o los datos que requiera php
+                    url: 'phpFiles/cerrar.php',
+                    success: function(requerimiento) { // en versiones de jQuery responseTex
+                        if ((requerimiento) == "1") {
+                            window.open("principal.php", "_self");
                         }
+                    }
 
-                    });
                 });
-
-
             });
         </script>
 
@@ -93,6 +97,48 @@ if (!isset($_SESSION["usuario"])) {
 
             });
         </script>
+
+        <script>
+            var idCancion;
+
+            function obtenerID(identificador) {
+                idCancion(identificador);
+            }
+
+            $(function(){
+                idCancion = function(id) {
+                    //alert(id);
+                    var envioDatos = 'action=CargarCancion&id=' + id;
+                    //alert(envioDatos);
+                    $.ajax({
+                        type: 'GET',
+                        data: envioDatos,
+                        url: 'phpFiles/sentenciasSql.php',
+                        success: function(requerimiento) {
+                            var sm = JSON.parse(requerimiento);
+                            //alert(sm.nombreCan + ' ' + sm.urlCan + ' ' + sm.imagenCan + ' ');
+                            $('#nombre').text(sm.nombreCan);
+                            $('#imagen').attr('src', "portadas/"+sm.imagenCan);
+                            $('#ruta').attr('src', "canciones/"+sm.urlCan);
+                        },
+                        complete: function(requerimiento) {
+                            var sm = JSON.parse(requerimiento);
+                            //alert(sm.nombreCan + ' ' + sm.urlCan + ' ' + sm.imagenCan + ' ');
+                            $("#nombre").text(sm.nombreCan);
+                            $('#imagen').attr('src', "portadas/"+sm.imagenCan);
+                            $('#ruta').attr('src', "canciones/"+sm.urlCan);
+                        }
+                    });
+                }
+            });
+        </script>
+        <script>
+            $("#recarga").click(function() {
+                    window.location.reload('principal.php');
+
+                });
+        </script>
+
     </head>
 
     <body>
@@ -165,54 +211,51 @@ if (!isset($_SESSION["usuario"])) {
                     <?php echo cargarCanciones(); ?>
                 </div>
             </div>
-
         </div>
 
+        <div id="reproductor">
+            <div class="container">
+                <div class="audioPlayer">
+                    <div class="playerContainer">
+                        <div class="albumArt">
+                            <img id="imagen" src="portadas/default.png">
+                        </div>
 
-        <div id="aplayer"></div>
+                        <div class="info">
+                            <div class="audioName">
+                                <h5 id="nombre">Nombre de la cancion</h5>
+                            </div>
+                            <div class="seekBar">
+                                <span class="outer">
+                                    <span class="inner"></span>
+                                </span>
+                            </div>
+                            <div class="timing">
+                                <span class="start">0.00</span>
+                                <span class="end">0.00</span>
+                            </div>
+                        </div>
 
+                        <div class="volumeControl">
+                            <div class="wrapper">
+                                <i class="fa fa-volume-up"></i>
+                                <span class="outer">
+                                    <span class="inner"></span>
+                                </span>
+                            </div>
+                        </div>
 
-        <script>
-            // NOW I CLICK album-poster TO GET CURRENT SONG ID
-            $(".album-poster").on('click', function(e) {
-                var dataSwitchId = $(this).attr('data-switch');
-                //console.log(dataSwitchId);
+                        <button class="btn play">
+                            <i class="fa fa-play"></i>
+                            <i class="fa fa-pause"></i>
+                        </button>
+                        <audio class="audio" id="ruta" src="#">
+                        </audio>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                // and now i use aplayer switch function see
-                ap.list.switch(dataSwitchId); //this is static id but i use dynamic 
-
-                // aplayer play function
-                // when i click any song to play
-                ap.play();
-
-                // click to slideUp player see
-                $("#aplayer").addClass('showPlayer');
-            });
-
-            const ap = new APlayer({
-                container: document.getElementById('aplayer'),
-                listFolded: true,
-                //theme: '#b7daff',
-                volume: 0.7,
-                autoplay: false,
-                //fixed: true,
-                audio: [{
-                        name: 'Stronger',
-                        artist: 'Stonebank ft Emel',
-                        url: 'canciones/Stronger (feat. Emel).mp3',
-                        cover: 'https://geo-media.beatport.com/image_size/1400x1400/37d71724-1d64-474f-b432-59e82f6c51cf.jpg'
-                    },
-                    {
-                        name: 'Si Estuviesemos Juntos',
-                        artist: 'Bad Bunny',
-                        url: 'canciones/Si Estuviesemos Juntos.mp3',
-                        cover: 'https://images.pexels.com/photos/1699161/pexels-photo-1699161.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
-                    }
-
-
-                ]
-            });
-        </script>
 
 
         <!-- Modal -->
@@ -226,7 +269,7 @@ if (!isset($_SESSION["usuario"])) {
                         </button>
                     </div>
                     <div class="modal-body" id="resultadoBusqueda">
-                        ...
+
                     </div>
 
                 </div>
@@ -298,8 +341,8 @@ if (!isset($_SESSION["usuario"])) {
 
                     <!-- Modal footer -->
                     <div class="modal-footer">
-                        <a type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</a>
-                        <a type="button" class="btn btn-danger" href="index.php" id="salir">Logout</a>
+                        <a type="button" class="btn btn-primary" data-dismiss="modal">No</a>
+                        <a type="button" class="btn btn-danger" href="index.php" id="salir">Si</a>
                     </div>
 
                 </div>
