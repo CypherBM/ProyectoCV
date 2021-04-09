@@ -17,25 +17,14 @@ if (!isset($_SESSION["usuario"])) {
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Artistas</title>
-       <script type="text/javascript" src="js/jquery35.js"></script>
-       <link rel="stylesheet" type="text/css" href="css/bootstrap/css/bootstrap.min.css">
-	   <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>	
-		
-	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
-	    <link rel="stylesheet"href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
-	    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-        <!--<link rel="StyleSheet" href="styles/stylePrincipal.css">-->
-        <link rel="StyleSheet" href="styles/slider.css">
+        <script type="text/javascript" src="js/jquery35.js"></script>
+        <link rel="StyleSheet" href="bootstrap/css/bootstrap.css">
+        <link rel="StyleSheet" href="styles/stylePrincipal.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-       
-        <link rel="icon" href="icon/icono.png" type="image/gif" />
-        <script type="text/javascript" src="js/slider.js"></script>
         
+        <link rel="icon" href="icon/icono.png" type="image/gif" />
+        <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
         <script src="https://kit.fontawesome.com/292edbdf21.js" crossorigin="anonymous"></script>
-       
-       
 
         <script type="text/javascript">
             $(document).ready(function() {
@@ -69,19 +58,19 @@ if (!isset($_SESSION["usuario"])) {
 
         <script type="text/javascript">
             $(document).ready(function() {
-                $("#busqueda").on('click', function() {
-                    var busqueda = $("#buscador").val();
+                $("#busquedaArt").on('click', function() {
+                    var busquedaArtista = $("#buscador").val();
                     //alert(busqueda);
                     $.ajax({
                         type: 'POST',
-                        url: 'phpFiles/busqueda.php',
+                        url: 'phpFiles/busquedaArtista.php',
                         data: {
-                            palabra_principal: busqueda
+                            palabra_clave: busquedaArtista
                         },
                         success: function(requerimiento) {
                             //alert(requerimiento);
-                            $("#modalBusqueda").modal('show');
-                            $("#resultadoBusqueda").html(requerimiento);
+                            $("#busquedaArtista").modal('show');
+                            $("#resBusArt").html(requerimiento);
                         }
                     });
 
@@ -129,7 +118,7 @@ if (!isset($_SESSION["usuario"])) {
                         <ul class="navbar-nav mr-auto ml-auto">
                             <div class="form-inline my-2 my-lg-0">
                                 <input class="form-control mr-sm-2 ch_length" id="buscador" name="buscador" type="search" placeholder="Buscar" aria-label="Search">
-                                <button class="btn btn-outline-primary rounded my-2 my-sm-0" id="busqueda" name="busqueda"><i class="fas fa-search"></i></button>
+                                <button class="btn btn-outline-primary rounded my-2 my-sm-0" id="busquedaArt" name="busqueda"><i class="fas fa-search"></i></button>
                                 <div>
                         </ul>
 
@@ -157,34 +146,34 @@ if (!isset($_SESSION["usuario"])) {
                     <div class="col-md-12">
                         <h3>Catalogo De Artistas</h3>
                     </div>
+                    <?php echo cargarArtistas(); ?>
                 </div>
             </div>
         </div>
 
         <!-- =============================================================== SLIDER BOX -->
-        <section class="slider">
+        
+        <!----<section class="slider">
             <ul id="autoWidth" class="cs-hidden">
-                <!--1------------------------------------>
+                </li>
                 <li class="item-a">
-                    <!--box-slider--------------->
                     <div class="box">
-                        <!--img-box---------->
+
                         <div class="slide-img">
                             <img alt="1" src="images/1.jpg">
-                            <!--overlayer---------->
+
                             <div class="overlay">
-                                <!--buy-btn------>
+
                                 <a href="#" class="buy-btn">Buy Now</a>
                             </div>
                         </div>
-                        <!--detail-box--------->
+
                         <div class="detail-box">
-                            <!--type-------->
+
                             <div class="type">
                                 <a href="#">Rabbed Cardigan</a>
                                 <span>Noe Arrival</span>
                             </div>
-                            <!--price-------->
                             <a href="#" class="price">$23</a>
 
                         </div>
@@ -192,11 +181,12 @@ if (!isset($_SESSION["usuario"])) {
                     </div>
                 </li>
             </ul>
-        </section>
+        </section>-->
+        
 
 
         <!-- Modal -->
-        <div class="modal fade" id="modalBusqueda" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal fade" id="busquedaArtista" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -205,7 +195,7 @@ if (!isset($_SESSION["usuario"])) {
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body" id="resultadoBusqueda">
+                    <div class="modal-body" id="resBusArt">
                         ...
                     </div>
 

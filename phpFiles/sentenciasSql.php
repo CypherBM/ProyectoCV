@@ -61,6 +61,12 @@ function cargarCanciones()
 {
     return sqlcargarCanciones();
 }
+
+function cargarArtistas()
+{
+    return sqlcargarArtistas();
+}
+
 function nombreBase()
 {
     return sqlNombreBase();

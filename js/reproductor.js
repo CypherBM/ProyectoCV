@@ -16,7 +16,7 @@ $(document).ready(function(){
     
     
            /** AL HACER CLIC EN EL BOTON PLAY */
-            $(player).find(".btn").on('click',function(){
+            $(player).find(".btn1").on('click',function(){
                 var _button = $(this);
                 /**Si el boton tiene la clase play  */
                 if(_button.hasClass("play")){

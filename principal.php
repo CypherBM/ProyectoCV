@@ -12,9 +12,7 @@ if (!isset($_SESSION["usuario"])) {
 
 ?>
 
-
-
-    <head>
+<head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -96,12 +94,15 @@ if (!isset($_SESSION["usuario"])) {
         </script>
 
         <script>
+           $(document).ready(function() {
+                $("#reproductor").hide();
+            });
             var idCancion;
 
             function obtenerID(identificador) {
                 idCancion(identificador);
             }
-
+            
             $(function(){
                 idCancion = function(id) {
                     //alert(id);
@@ -117,6 +118,7 @@ if (!isset($_SESSION["usuario"])) {
                             $('#nombre').text(sm.nombreCan);
                             $('#imagen').attr('src', "portadas/"+sm.imagenCan);
                             $('#ruta').attr('src', "canciones/"+sm.urlCan);
+                            $("#reproductor").show();
                         },
                         complete: function(requerimiento) {
                             var sm = JSON.parse(requerimiento);
@@ -131,6 +133,7 @@ if (!isset($_SESSION["usuario"])) {
         </script>
 
     </head>
+
 
     <body>
         <header>
@@ -230,7 +233,7 @@ if (!isset($_SESSION["usuario"])) {
                             </div>
                         </div>
 
-                        <button class="btn play">
+                        <button class="btn1 play">
                             <i class="fa fa-play"></i>
                             <i class="fa fa-pause"></i>
                         </button>

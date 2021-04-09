@@ -80,30 +80,54 @@ function sqlcargarCanciones()
                     </a>
                     <div class='detail-box'>
                         <div class='type'>
-                            <h4>".$fila['nombreCan']."</h4>
-                            <p>".$fila['idArtista']."</p>
+                            <h4>" . $fila['nombreCan'] . "</h4>
+                            <p>" . $fila['idArtista'] . "</p>
                         </div>
-                        <a href='canciones/".$fila['urlCan']."' class='descarga' download='".$fila['nombreCan']."'><i class='far fa-arrow-alt-circle-down'></i></a>
-                        <button id='".$fila['idCan']."' href='canciones/".$fila['urlCan']."' onclick='obtenerID(this.id);' class='descarga border-0 rounded-circle'><i class='far fa-play-circle'></i></button>
+                        <a href='canciones/" . $fila['urlCan'] . "' class='descarga' download='" . $fila['nombreCan'] . "'><i class='far fa-arrow-alt-circle-down'></i></a>
+                        <button id='" . $fila['idCan'] . "' href='canciones/" . $fila['urlCan'] . "' onclick='obtenerID(this.id);' class='descarga border-0 rounded-circle'><i class='far fa-play-circle'></i></button>
                     </div>
                     </div>";
     }
     return $cadena;
 }
 
-function sqlCargarReproductor($idCancion){
-    
+function sqlcargarArtistas()
+{
+    $sql = "select * from usuarios where perfilUsu= 'artista'";
+    $con = conexionBD();
+    //$parametros = array($rol);
+    $resultado = sqlsrv_query($con, $sql);
+    $cadena = "";
+    //$indice = 1;
+    while ($fila = sqlsrv_fetch_array($resultado, SQLSRV_FETCH_ASSOC)) {
+        $cadena .= "<div class='col-md-3'>
+        <img class='img-card' src='imgUsu/" . $fila['imagenUsu'] . "'>
+        </a>
+        <div class='detail-box'>
+            <div class='type'>
+                <h4>" . $fila['idUsu'] . "</h4>
+                <p>" . $fila['correoUsu'] . "</p>
+            </div>
+        </div>
+        </div>";
+    }
+    return $cadena;
+}
+
+function sqlCargarReproductor($idCancion)
+{
+
     $sql = "select * from canciones where idCan= ? ";
     $con = conexionBD();
     $parametros = array($idCancion);
-    $resultado = sqlsrv_query($con, $sql,$parametros);
+    $resultado = sqlsrv_query($con, $sql, $parametros);
     $cadena = "";
     $fila = sqlsrv_fetch_array($resultado);
     //$indice = 1;
-        
-        //$idCancion = $_POST["id"];
-    
-   /* while ($fila = sqlsrv_fetch_array($resultado, SQLSRV_FETCH_ASSOC)) {
+
+    //$idCancion = $_POST["id"];
+
+    /* while ($fila = sqlsrv_fetch_array($resultado, SQLSRV_FETCH_ASSOC)) {
         $cadena .= "";
     }*/
 
