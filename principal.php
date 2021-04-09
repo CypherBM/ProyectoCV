@@ -1,9 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
 <?php
-include_once("phpFiles/sentenciasSql.php");
+	if(!isset($_SESSION)){
+
+	}
+	
+
+	include_once("phpFiles/sentenciasSql.php");	
+	
+
+	if(!isset($_SESSION["usuario"])){
+		header('Location: login.php');
+	}else{
+	
 ?>
+<head>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,6 +56,21 @@ include_once("phpFiles/sentenciasSql.php");
             }
 
         });
+        $("#salir").click(function(){
+		var envioDatos="";
+				
+					$.ajax({
+						type : 'POST',       //necesitamos definir como vamos a pasar los datos
+						data : envioDatos,   // enviar la variable o los datos que requiera php
+						url  : 'cerrar.php',
+						success: function(requerimiento){  // en versiones de jQuery responseTex
+						if((requerimiento)=="1"){
+							window.open("principal.php","_self");
+						}
+					}	
+
+		  });
+	});
     
     });
     
@@ -82,6 +109,10 @@ include_once("phpFiles/sentenciasSql.php");
 echo determinarRol();
     ?>">
     
+<a class="btn btn-danger" href="login.php" id="salir">salir</a>
 
 </body>
 </html>
+<?php
+}
+?>
